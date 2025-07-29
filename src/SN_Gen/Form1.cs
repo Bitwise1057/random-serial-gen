@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Collections.Generic;
 
 // The assumption I have any idea what I'm doing is a strong one.
 // This program was created with the intent of being used for Serial Number / String Generation.
@@ -19,12 +20,40 @@ namespace SN_GEN
         private const int HT_CAPTION = 0x2;
         public Form1()
         {
+            string appDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string configPath = Path.Combine(appDirectory, "config.bitwise");
             InitializeComponent();
             this.MouseDown += Form1_MouseDown!;
             panel2.MouseDown += panel2_MouseDown!;
-            label5.ForeColor = Color.FromArgb(0, 126, 249);
 
-		}
+            if (!File.Exists(configPath))
+                return;
+
+            try
+            {
+                var lines = File.ReadAllLines(configPath);
+                foreach (string line in lines)
+                {
+                    var parts = line.Split('=');
+                    if (parts.Length != 2)
+                        continue;
+
+                    string key = parts[0].Trim().ToLower();
+                    string value = parts[1].Trim().ToLower();
+                    bool isChecked = value == "true";
+
+                    switch (key)
+                    {
+                        case "checkbox1": checkBox1.Checked = isChecked; break;
+                        case "checkbox2": checkBox2.Checked = isChecked; break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error reading config: {ex.Message}", "Error");
+            }
+        }
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -62,6 +91,21 @@ namespace SN_GEN
         }
         private void btnExit_Click(object sender, EventArgs e)
         {
+            if (checkBox1.Checked && textBox3.Text != "")
+            {
+                string content = textBox3.Text;
+                string appDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                string filePath = Path.Combine(appDirectory, "SavedText.txt");
+                try
+                {
+                    // MessageBox.Show("Successful Debug");
+                    File.WriteAllText(filePath, content);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
             Application.Exit(); // Need to add auto save function for SN List.
         }
 
@@ -78,7 +122,8 @@ namespace SN_GEN
             textBox4.Show();
             btnSave.Show();
             button1.Show();
-            label1.Show(); label2.Show(); label3.Show(); label4.Hide();
+            label1.Show(); label2.Show(); label3.Show();
+            panel3.Hide();
 
         }
 
@@ -90,7 +135,8 @@ namespace SN_GEN
             textBox4.Hide();
             btnSave.Hide();
             button1.Hide();
-            label1.Hide(); label2.Hide(); label3.Hide(); label4.Show();
+            label1.Hide(); label2.Hide(); label3.Hide();
+            panel3.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -164,7 +210,26 @@ namespace SN_GEN
         {
             About form2 = new About();
             form2.ShowDialog();
-            
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string appDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string configPath = Path.Combine(appDirectory, "config.bitwise");
+            var lines = new List<string>
+            {
+                $"checkBox1={checkBox1.Checked}",
+                $"checkBox2={checkBox2.Checked}"
+                };
+            try
+            {
+                File.WriteAllLines(configPath, lines);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving config:{ex.Message}", "Error");
+            }
         }
     }
 }

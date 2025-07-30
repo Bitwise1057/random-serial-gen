@@ -98,24 +98,24 @@ namespace SN_GEN
             label2.FlatStyle = FlatStyle.Flat;
             label2.Font = new Font("Nirmala UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.FromArgb(0, 126, 249);
-            label2.Location = new Point(62, 85);
+            label2.Location = new Point(67, 49);
             label2.Name = "label2";
-            label2.Size = new Size(272, 30);
+            label2.Size = new Size(257, 30);
             label2.TabIndex = 9;
-            label2.Text = "Current Version: V1.0.0.1";
+            label2.Text = "Current Version: 1.0.0.0";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.FlatStyle = FlatStyle.Flat;
-            label3.Font = new Font("Nirmala UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Nirmala UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.FromArgb(0, 126, 249);
-            label3.Location = new Point(160, 55);
+            label3.Location = new Point(77, 152);
             label3.Name = "label3";
-            label3.Size = new Size(56, 30);
+            label3.Size = new Size(245, 25);
             label3.TabIndex = 10;
-            label3.Text = "WIP";
+            label3.Text = "Developed by Bitwise1057";
             label3.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label4
@@ -124,7 +124,7 @@ namespace SN_GEN
             label4.FlatStyle = FlatStyle.Flat;
             label4.Font = new Font("Nirmala UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.FromArgb(0, 126, 249);
-            label4.Location = new Point(18, 115);
+            label4.Location = new Point(18, 83);
             label4.Name = "label4";
             label4.Size = new Size(358, 63);
             label4.TabIndex = 11;
@@ -152,10 +152,10 @@ namespace SN_GEN
             BackColor = Color.FromArgb(46, 51, 73);
             ClientSize = new Size(392, 256);
             Controls.Add(button1);
-            Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(panel2);
+            Controls.Add(label4);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 2, 3, 2);
             Name = "About";

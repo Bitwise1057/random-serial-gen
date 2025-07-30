@@ -46,9 +46,8 @@ namespace SN_GEN
             label3 = new Label();
             btnSave = new Button();
             panel3 = new Panel();
-            checkBox2 = new CheckBox();
-            checkBox1 = new CheckBox();
             button5 = new Button();
+            checkBox1 = new CheckBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -277,7 +276,6 @@ namespace SN_GEN
             // panel3
             // 
             panel3.Controls.Add(button5);
-            panel3.Controls.Add(checkBox2);
             panel3.Controls.Add(checkBox1);
             panel3.Location = new Point(193, 42);
             panel3.Name = "panel3";
@@ -285,17 +283,20 @@ namespace SN_GEN
             panel3.TabIndex = 12;
             panel3.Visible = false;
             // 
-            // checkBox2
+            // button5
             // 
-            checkBox2.AutoSize = true;
-            checkBox2.Font = new Font("Nirmala UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            checkBox2.ForeColor = Color.FromArgb(0, 126, 249);
-            checkBox2.Location = new Point(5, 42);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(278, 25);
-            checkBox2.TabIndex = 1;
-            checkBox2.Text = "Auto Update (Not Implemented)";
-            checkBox2.UseVisualStyleBackColor = true;
+            button5.BackColor = Color.FromArgb(24, 30, 54);
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Font = new Font("Nirmala UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button5.ForeColor = Color.FromArgb(0, 126, 249);
+            button5.Location = new Point(5, 41);
+            button5.Margin = new Padding(3, 2, 3, 2);
+            button5.Name = "button5";
+            button5.Size = new Size(169, 29);
+            button5.TabIndex = 11;
+            button5.Text = "Save Settings";
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // checkBox1
             // 
@@ -304,25 +305,10 @@ namespace SN_GEN
             checkBox1.ForeColor = Color.FromArgb(0, 126, 249);
             checkBox1.Location = new Point(5, 11);
             checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(167, 25);
+            checkBox1.Size = new Size(178, 25);
             checkBox1.TabIndex = 0;
-            checkBox1.Text = "Auto-Save On Exit";
+            checkBox1.Text = "Save Serials On Exit";
             checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            button5.BackColor = Color.FromArgb(24, 30, 54);
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Nirmala UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.ForeColor = Color.FromArgb(0, 126, 249);
-            button5.Location = new Point(6, 72);
-            button5.Margin = new Padding(3, 2, 3, 2);
-            button5.Name = "button5";
-            button5.Size = new Size(169, 29);
-            button5.TabIndex = 11;
-            button5.Text = "Save Settings";
-            button5.UseVisualStyleBackColor = false;
-            button5.Click += button5_Click;
             // 
             // Form1
             // 
@@ -377,7 +363,6 @@ namespace SN_GEN
         private Label label5;
         private Panel panel3;
         private CheckBox checkBox1;
-        private CheckBox checkBox2;
         private Button button5;
     }
 }

@@ -26,7 +26,7 @@ namespace SN_GEN
             this.MouseDown += Form1_MouseDown!;
             panel2.MouseDown += panel2_MouseDown!;
 
-            if (!File.Exists(configPath))
+            if (!File.Exists(configPath)) // Start of Config Load
                 return;
 
             try
@@ -45,13 +45,13 @@ namespace SN_GEN
                     switch (key)
                     {
                         case "checkbox1": checkBox1.Checked = isChecked; break;
-                        case "checkbox2": checkBox2.Checked = isChecked; break;
+                       // case "checkbox2": checkBox2.Checked = isChecked; break;
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error reading config: {ex.Message}", "Error");
+                MessageBox.Show($"Error reading config: {ex.Message}", "Error"); // End of Config Load
             }
         }
         private void Form1_MouseDown(object sender, MouseEventArgs e)
@@ -91,7 +91,7 @@ namespace SN_GEN
         }
         private void btnExit_Click(object sender, EventArgs e)
         {
-            if (checkBox1.Checked && textBox3.Text != "")
+            if (checkBox1.Checked && textBox3.Text != "") // Auto_Save based on Checkbox1's check status
             {
                 string content = textBox3.Text;
                 string appDirectory = AppDomain.CurrentDomain.BaseDirectory;
@@ -106,7 +106,7 @@ namespace SN_GEN
                     MessageBox.Show(ex.Message);
                 }
             }
-            Application.Exit(); // Need to add auto save function for SN List.
+            Application.Exit();
         }
 
         private void btnMini_Click(object sender, EventArgs e)
@@ -216,11 +216,11 @@ namespace SN_GEN
         private void button5_Click(object sender, EventArgs e)
         {
             string appDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string configPath = Path.Combine(appDirectory, "config.bitwise");
+            string configPath = Path.Combine(appDirectory, "config.bitwise"); // Config Name
             var lines = new List<string>
             {
                 $"checkBox1={checkBox1.Checked}",
-                $"checkBox2={checkBox2.Checked}"
+               // $"checkBox2={checkBox2.Checked}"
                 };
             try
             {
@@ -228,7 +228,7 @@ namespace SN_GEN
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error saving config:{ex.Message}", "Error");
+                MessageBox.Show($"Error saving config:{ex.Message}", "Error"); // End of Config Creation
             }
         }
     }
